@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper >
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page,index) of pages" :key="index">
         <div
           class="icon"
@@ -24,56 +24,20 @@
   export default {
     components: {SwiperSlide},
     name: "HomeIcons",
+    props:{
+      list:Array
+    },
     data () {
       return{
-        iconList:[{
-          id:'0001',
-          imgUrl:'https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc:'景点门票'
-        },{
-          id:'0002',
-          imgUrl:'https://imgs.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-          desc:'广州必游'
-        },{
-          id:'0003',
-          imgUrl:'https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/a40ee278d67000f2a29d2e20f6a029b3.png',
-          desc:'自然风光'
-        },{
-          id:'0004',
-          imgUrl:'https://imgs.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png',
-          desc:'动植物园'
-        },{
-          id:'0005',
-          imgUrl:'https://imgs.qunarzz.com/piao/fusion/1803/3e/86314b2af03b7502.png',
-          desc:'珠江夜游'
-        },{
-          id:'0006',
-          imgUrl:'https://imgs.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png',
-          desc:'泡温泉'
-        },{
-          id:'0007',
-          imgUrl:'https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-          desc:'一日游'
-        },{
-          id:'0008',
-          imgUrl:'https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/184e261814a5d07a5d3d08cd29cf590d.png',
-          desc:'长隆度假区'
-        },{
-          id:'0009',
-          imgUrl:'https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/c032ae43b15a3dac34b5e07bb0e46850.png',
-          desc:'广州塔'
-        },{
-          id:'0010',
-          imgUrl:'https://imgs.qunarzz.com/piao/fusion/1803/bd/9f7b9b2b60c1502.png',
-          desc:'踏青赏花'
+        swiperOption:{
+          autoplay:false
         }
-        ]
       }
     },
     computed: {
       pages () {
         const pages = []
-        this.iconList.forEach((item, index) => {
+        this.list.forEach((item, index) => {
           const page = Math.floor(index / 8)
           if (!pages[page]) {
             pages[page] = []

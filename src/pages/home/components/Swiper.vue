@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
-     <swiper-slide v-for="item of swiperList" :key="item.id">
+    <swiper :options="swiperOption" v-if="showSwiper">
+     <swiper-slide v-for="item of list" :key="item.id">
       <img class="swiper-img"  :src="item.imgUrl"
       />
       </swiper-slide>
@@ -26,13 +26,16 @@
     export default {
       components: {SwiperSlide},
       name: "HomeSwiper",
+      props:{
+        list:Array
+      },
         data (){
           return{
             swiperOption:{
               pagination:'.swiper-pagination',
               loop:true //让轮播插件支持循环轮播
 
-            },
+            }/*,
             swiperList:[{
               id:'0001',
               imgUrl:'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193\n' +
@@ -41,9 +44,14 @@
               id:'0002',
               imgUrl:'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20192/\n' +
               '892f011c3b7bd6815b460c659acc5651.jpg_750x200_e2242cfb.jpg'
-            }]
+            }]*/
           }
-        }
+        },
+      computed:{
+          showSwiper (){
+            return this.list.length
+          }
+      }
 
     }
 </script>
