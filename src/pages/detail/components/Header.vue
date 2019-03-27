@@ -13,6 +13,7 @@
       v-show="!showAbs"
       :style="opacityStyle"
 
+
     >
       <router-link  to="/" >
         <div class="iconfont header-fixed-back">&#xe624;</div>
@@ -27,29 +28,32 @@
 
     export default {
       name: "DetailHeader",
-      data (){
+      data() {
         return {
-          showAbs:true,
-          opacityStyle:{
-            opacity:0
+          showAbs: true,
+          opacityStyle: {
+            opacity: 0
           }
         }
       },
-    methods:{
-        handleScroll (){
+      methods: {
+        handleScroll() {
           const top = document.documentElement.scrollTop
-          if (top > 60 ){
-            let  opacity = top / 140
+          if (top > 60) {
+            let opacity = top / 140
             opacity = opacity > 1 ? 1 : opacity
-            this.opacityStyle = { opacity }
+            this.opacityStyle = {opacity}
             this.showAbs = false
-          }else{
+          } else {
             this.showAbs = true
           }
         }
-    },
-      activated (){
-        window.addEventListener('scroll',this.handleScroll)
+      },
+      activated() {
+        window.addEventListener('scroll', this.handleScroll)
+      },
+      deactivated() {
+        window.removeEventListener('scroll', this.handleScroll)
       }
     }
 </script>
