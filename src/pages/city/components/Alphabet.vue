@@ -5,7 +5,7 @@
       v-for="item of letters"
       :key="item"
       :ref="item"
-      @touchstart="handleTouchStart"
+      @touchstart.prevent="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
       @click="handleLetterClick"
@@ -87,7 +87,7 @@
     bottom: 0
     width:.4rem
     .item
-      line-height :.4rem
+      line-height :.38rem
       text-align:center
       color: $bgColor
 
